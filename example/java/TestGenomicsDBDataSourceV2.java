@@ -202,8 +202,8 @@ public final class TestGenomicsDBDataSourceV2 {
 
     Dataset<Row> variants;
     DataFrameReader reader = spark.read()
-            .format("org.genomicsdb.spark.GenomicsDBDataSourceV2")
-            .schema(schema)
+            .format("org.genomicsdb.spark.GenomicsDBDataSource")
+            //.schema(schema)
             .option("genomicsdb.input.loaderjsonfile", lDstFile.getName());
     if (!hostfile.isEmpty()) {
       reader = reader.option("genomicsdb.input.mpi.hostfile", hostfile);
@@ -222,6 +222,7 @@ public final class TestGenomicsDBDataSourceV2 {
     }
     variants = reader.load();
 
+    System.out.println(variants.show());
     String tempDir = "./" + UUID.randomUUID().toString();
 
     // change number format for our floats so they're easier to read/compare
