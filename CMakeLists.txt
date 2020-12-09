@@ -441,6 +441,9 @@ if(BUILD_JAVA)
 	./src/main/java/org/genomicsdb/spark/GenomicsDBInputPartitionReader.java
 	./src/main/java/org/genomicsdb/spark/GenomicsDBInput.java
         ./src/main/java/org/genomicsdb/spark/GenomicsDBSchemaFactory.java
+        ./src/main/java/org/genomicsdb/spark/GenomicsDBDataSource.java
+        ./src/main/java/org/genomicsdb/spark/GenomicsDBRelation.java
+        ./src/main/java/org/genomicsdb/reader/FunctionVariantContextToRow.java 
         ./src/main/java/org/genomicsdb/Constants.java
         ./src/main/java/org/genomicsdb/GenomicsDBLibLoader.java
         ./src/main/scala/org/genomicsdb/GenomicsDBContext.scala

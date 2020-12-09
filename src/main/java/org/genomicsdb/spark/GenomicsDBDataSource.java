@@ -29,6 +29,10 @@ import org.apache.spark.sql.types.StructType;
 import org.apache.spark.sql.sources.DataSourceRegister;
 import org.apache.spark.sql.SQLContext;
 
+/**
+ * DataSourceV1 initial implementation that is available if needed for backwards 
+ * compat with future spark versions.
+ */
 public class GenomicsDBDataSource implements RelationProvider, SchemaRelationProvider, DataSourceRegister {
 
   public GenomicsDBDataSource() {}

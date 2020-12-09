@@ -83,6 +83,14 @@ public class GenomicsDBRelation extends BaseRelation implements TableScan {
     return this.sqlCon;
   }
 
+  /**
+   * This was a first attempt at the V1 implementation, in case it is needed 
+   * for backwards compatibility for Spark versions in the future.
+   * Improvements could include:
+   * - hostfile is optional
+   * - use the schema to add additional attributes beyond the default schema to the Row
+   * - Map directly into row rather than an extra map, if possible.
+   */
   @Override
   public RDD<Row> buildScan(){
     Configuration hadoopConf = this.sqlCon.sparkContext().hadoopConfiguration();
@@ -96,6 +104,7 @@ public class GenomicsDBRelation extends BaseRelation implements TableScan {
     }else{
       hadoopConf.set(this.gdbConf.QUERYJSON, this.gdbConf.getQueryJsonFile());
     }
+    // make this optional
     hadoopConf.set(this.gdbConf.MPIHOSTFILE, this.gdbConf.getHostFile());
 
     RDD<scala.Tuple2<String,VariantContext>> variants;
